@@ -46,7 +46,7 @@ class GridLayout extends Field
     
     public $numberOfRows = 1;
     public $numberOfColumns = 1;
-    public $matrixSelect = '';
+    public $matrixSelect = ['One','Two','Three'];
 
     // Static Methods
     // =========================================================================
@@ -234,7 +234,7 @@ class GridLayout extends Field
     public function getSettingsHtml()
     {
         // Render the settings template
-        Craft::dd(Craft::$app->fields->getAllFields());
+
         return Craft::$app->getView()->renderTemplate(
             'grid-layout-field-type/_components/fields/GridLayout_settings',
             [
@@ -368,6 +368,7 @@ class GridLayout extends Field
                 'name' => $this->handle,
                 'value' => $value,
                 'field' => $this,
+                'matrixOptions' => [['value' => 'one', 'label' => 'One'], ['value' => 'two', 'label' => 'Two'], ['value' => 'three', 'label' => 'Three']],
                 'id' => $id,
                 'namespacedId' => $namespacedId,
             ]
