@@ -1,0 +1,42 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Grid Layout Field Type plugin for Craft CMS
+ *
+ * GridLayout Field Settings
+ *
+ * @author    Marc Hartwig
+ * @copyright Copyright (c) 2018 Marc Hartwig
+ * @link      marchartwig.com
+ * @package   GridLayoutFieldType
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("mhartwig\\gridlayoutfieldtype\\assetbundles\\gridlayoutfieldtype\\GridLayoutFieldTypeAsset") %}
+
+{{ forms.textField({
+    label: 'Number of Rows',
+    instructions: 'Enter the number of rows for your grid.',
+    id: 'numberOfRows',
+    name: 'numberOfRows',
+    value: field['numberOfRows']})
+}}
+
+{{ forms.textField({
+    label: 'Number of Columns',
+    instructions: 'Enter the number of columns for your grid.',
+    id: 'numberOfColumns',
+    name: 'numberOfColumns',
+    value: field['numberOfColumns']})
+}}
+
+{{ forms.selectField({
+    label: 'Matrix Select',
+    instructions: 'Choose a Matrix field',
+    id: 'matrixSelect',
+    name: 'matrixSelect',
+    value: field['matrixSelect']})
+}}

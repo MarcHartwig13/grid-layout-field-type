@@ -1,0 +1,54 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Grid Layout Field Type plugin for Craft CMS 3.x
+ *
+ * GridLayout Field Input
+ *
+ * @author    Marc Hartwig
+ * @copyright Copyright (c) 2018 Marc Hartwig
+ * @link      marchartwig.com
+ * @package   GridLayoutFieldType
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{#<div class="grid_layout_field_type grid_layout_field_type_{{ field['id'] }}">
+{% for row in 0..field['numberOfRows'] %}
+	<div class="grid_layout_field_type__row grid_layout_field_type__row--{{ loop.index }}">
+	{% for column in 0..field['numberOfColumns'] %}
+		<div class="grid_layout_field_type__row__column grid_layout_field_type__row__column--{{ loop.index }}">
+		</div>
+	{% endfor %}
+	</div>
+{% endfor %}
+</div>#}
+
+<grid class="grid_layout_field_type grid_layout_field_type_{{ field['id'] }}">
+	{% for row in 0..field['numberOfRows'] %}
+		{% set row_index = loop.index %}
+		<row row-position="{{ loop.index }}">
+		{% for column in 0..field['numberOfColumns'] %}
+			{% set column_index = loop.index %}
+			{% set grid_item_value = "row_" ~ row_index ~ "_column_" ~ column_index %}
+			<column row-position="{{ row_index }}" column-position="{{ loop.index }}" {% if grid_item_value in value %}:is-highlighted="true"{% else %}:is-highlighted="false"{% endif %}>
+				<grid-input row-position="{{ row_index }}" column-position="{{ column_index }}"  name="{{ name }}[]" value="{{ grid_item_value }}" id="{{ grid_item_value }}" {% if grid_item_value in value %}:is-checked="true"{% else %}:is-checked="false"{% endif %}></grid-input>
+			</column>
+		{% endfor %}
+		</row>
+	{% endfor %}
+</grid>
+
+{# <div>
+	{% for row in 0..field['numberOfRows'] %}
+		{% set row_index = loop.index %}
+		<p>Row {{ loop.index }}</p>
+		{% for column in 0..field['numberOfColumns'] %}
+			{% set column_index = loop.index %}
+			<p>Column {{ loop.index }}</p>
+			<input type="hidden" name="row_{{ row_index }}_column_{{ column_index }}" value="false"></input>
+		{% endfor %}
+	{% endfor %}
+</div> #}

@@ -1,0 +1,42 @@
+{
+    "name": "mhartwig/grid-layout-field-type",
+    "description": "User controlled grid layout",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "grid layout field type"
+    ],
+    "support": {
+        "docs": "https://github.com/Grid Layout/grid-layout-field-type/blob/master/README.md",
+        "issues": "https://github.com/Grid Layout/grid-layout-field-type/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Hartwig",
+            "homepage": "marchartwig.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1",
+        "craftcms/vue-asset": "^1.0.2"
+    },
+    "autoload": {
+        "psr-4": {
+          "mhartwig\\gridlayoutfieldtype\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Grid Layout Field Type",
+        "handle": "grid-layout-field-type",
+        "schemaVersion": "1.0.0",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/Grid Layout/grid-layout-field-type/master/CHANGELOG.md",
+        "class": "mhartwig\\gridlayoutfieldtype\\GridLayoutFieldType"
+    }
+}

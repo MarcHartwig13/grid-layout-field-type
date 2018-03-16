@@ -1,0 +1,34 @@
+/**
+ * Grid Layout Field Type plugin for Craft CMS
+ *
+ * GridLayout Field CSS
+ *
+ * @author    Marc Hartwig
+ * @copyright Copyright (c) 2018 Marc Hartwig
+ * @link      marchartwig.com
+ * @package   GridLayoutFieldType
+ * @since     1.0.0
+ */
+
+
+
+.grid_layout_field_type{
+	/*display:grid;*/
+}
+.grid_layout_field_type__row{
+	display:flex;
+	flex-flow:row nowrap;
+}
+.grid_layout_field_type__row__column{
+	width:20px;
+	height:20px;
+	border:1px solid #000000;
+}
+
+.grid_item__highlighted{
+	background:blue;
+}
+
+.grid_field_type__checkbox{
+	display:none;
+}
