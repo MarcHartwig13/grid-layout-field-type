@@ -100,7 +100,7 @@ class GridLayout extends Field
      */
     public function getContentColumnType(): string
     {
-        return Schema::TYPE_STRING;
+        return Schema::TYPE_TEXT;
     }
 
     /**
@@ -231,6 +231,7 @@ class GridLayout extends Field
      *
      * @return string|null
      */
+
     public function getSettingsHtml()
     {
         // Render the settings template
@@ -368,7 +369,6 @@ class GridLayout extends Field
                 'name' => $this->handle,
                 'value' => $value,
                 'field' => $this,
-                'matrixOptions' => [['value' => 'one', 'label' => 'One'], ['value' => 'two', 'label' => 'Two'], ['value' => 'three', 'label' => 'Three']],
                 'id' => $id,
                 'namespacedId' => $namespacedId,
             ]

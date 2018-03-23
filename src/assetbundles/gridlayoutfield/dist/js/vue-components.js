@@ -14,9 +14,6 @@ Vue.component('grid', {
 
     },
     methods: {
-        highlight(){
-
-        }
     },
     mounted(){
         //console.log("grid field vue fired");
@@ -42,9 +39,6 @@ Vue.component('row', {
 
     },
     methods: {
-        highlight(){
-
-        }
     },
     mounted(){
         this.rowPos = this.rowPosition;
@@ -69,6 +63,7 @@ Vue.component('column', {
         columnPosition: false,
         rowPosition: false,
         isHighlighted: false,
+        fieldId: false
     },
     created() {
 
@@ -77,7 +72,7 @@ Vue.component('column', {
         highlight(){
             this.highlighted = this.highlighted == true ? false : true;
             console.log(this.highlighted);
-            VueEvent.$emit('grid-item-highlighted', this.colPos, this.rowPos);
+            VueEvent.$emit('grid-item-highlighted', this.colPos, this.rowPos, this.fieldId);
         }
     },
     mounted(){
@@ -105,6 +100,7 @@ Vue.component('grid-input', {
         rowPosition: false,
         columnPosition: false,
         isChecked: false,
+        fieldId: false,
     },
     created() {
 
@@ -112,13 +108,16 @@ Vue.component('grid-input', {
     methods: {
     },
     mounted(){
-        console.log(this.isChecked);
+        //console.log(this.isChecked);
         this.checked = this.isChecked;
         this.colPos = this.columnPosition;
         this.rowPos = this.rowPosition;
-        VueEvent.$on('grid-item-highlighted', (highlightedColumnPositionColumn, highlightedColumnPositionRow) => {
-            if(this.colPos == highlightedColumnPositionColumn && this.rowPos == highlightedColumnPositionRow){
-                this.checked = this.checked == true ? false : true;
+        VueEvent.$on('grid-item-highlighted', (highlightedColumnPositionColumn, highlightedColumnPositionRow, IdOfField) => {
+            if(IdOfField == this.fieldId){
+                console.log("True. Id of Field: " + IdOfField + ". Field Id: " + this.fieldId);
+                if(this.colPos == highlightedColumnPositionColumn && this.rowPos == highlightedColumnPositionRow){
+                    this.checked = this.checked == true ? false : true;
+                }
             }
             
         });

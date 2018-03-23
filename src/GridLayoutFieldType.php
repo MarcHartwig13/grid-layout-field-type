@@ -12,6 +12,8 @@ namespace mhartwig\gridlayoutfieldtype;
 
 use mhartwig\gridlayoutfieldtype\models\Settings;
 use mhartwig\gridlayoutfieldtype\fields\GridLayout as GridLayoutField;
+use mhartwig\gridlayoutfieldtype\twigextensions\GridLayoutFieldTypeTwigExtension;
+use mhartwig\gridlayoutfieldtype\services\GridLayoutFieldTypeService as GridLayoutFieldTypeServiceService;
 
 use Craft;
 use craft\base\Plugin;
@@ -36,6 +38,7 @@ use yii\base\Event;
  * @package   GridLayoutFieldType
  * @since     1.0.0
  *
+ * 
  * @property  Settings $settings
  * @method    Settings getSettings()
  */
@@ -71,6 +74,8 @@ class GridLayoutFieldType extends Plugin
         parent::init();
         self::$plugin = $this;
 
+        Craft::$app->view->registerTwigExtension(new GridLayoutFieldTypeTwigExtension());
+
         // Register our fields
         Event::on(
             Fields::class,
@@ -90,6 +95,8 @@ class GridLayoutFieldType extends Plugin
                 }
             }
         );
+
+        
 
 /**
  * Logging in Craft involves using one of the following methods:

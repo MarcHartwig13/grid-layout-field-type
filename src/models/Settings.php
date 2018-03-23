@@ -41,7 +41,6 @@ class Settings extends Model
      */
     public $numberOfRows = 1;
     public $numberOfColumns = 1;
-    public $matrixSelect = ['One','Two','Three'];
 
     // Public Methods
     // =========================================================================

@@ -26,15 +26,20 @@
 {% endfor %}
 </div>#}
 
-<grid class="grid_layout_field_type grid_layout_field_type_{{ field['id'] }}">
+{{ dump(namespacedId) }}
+
+{#{{ dump(field) }}#}
+
+<grid class="grid_layout_field_type grid_layout_field_type_{{ namespacedId }}">
+	{% set fieldId = namespacedId %}
 	{% for row in 0..field['numberOfRows'] %}
 		{% set row_index = loop.index %}
 		<row row-position="{{ loop.index }}">
 		{% for column in 0..field['numberOfColumns'] %}
 			{% set column_index = loop.index %}
-			{% set grid_item_value = "row_" ~ row_index ~ "_column_" ~ column_index %}
-			<column row-position="{{ row_index }}" column-position="{{ loop.index }}" {% if grid_item_value in value %}:is-highlighted="true"{% else %}:is-highlighted="false"{% endif %}>
-				<grid-input row-position="{{ row_index }}" column-position="{{ column_index }}"  name="{{ name }}[]" value="{{ grid_item_value }}" id="{{ grid_item_value }}" {% if grid_item_value in value %}:is-checked="true"{% else %}:is-checked="false"{% endif %}></grid-input>
+			{% set grid_item_value = "r_" ~ row_index ~ "_c_" ~ column_index %}
+			<column row-position="{{ row_index }}" column-position="{{ loop.index }}" field-id="{{ fieldId }}" {% if grid_item_value in value %}:is-highlighted="true"{% else %}:is-highlighted="false"{% endif %}>
+				<grid-input row-position="{{ row_index }}" column-position="{{ column_index }}" field-id="{{ fieldId }}"  name="{{ name }}[layout][]" value="{{ grid_item_value }}" id="{{ grid_item_value }}" {% if grid_item_value in value %}:is-checked="true"{% else %}:is-checked="false"{% endif %}></grid-input>
 			</column>
 		{% endfor %}
 		</row>

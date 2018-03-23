@@ -37,6 +37,9 @@
         "hasCpSettings": true,
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/Grid Layout/grid-layout-field-type/master/CHANGELOG.md",
-        "class": "mhartwig\\gridlayoutfieldtype\\GridLayoutFieldType"
+        "class": "mhartwig\\gridlayoutfieldtype\\GridLayoutFieldType",
+        "components": {
+            "gridlayoutfieldtype": "mhartwig\\gridlayoutfieldtype\\services\\GridLayoutFieldTypeService"
+        }
     }
 }
